@@ -125,8 +125,6 @@ namespace OSS
                 endpoints.MapControllers();
             });
             app.UseFileServer(true);
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
         }
     }
 }
