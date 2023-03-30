@@ -9,12 +9,12 @@ namespace OSS.Common
         /// </summary>
         /// <param name="ip">IP</param>
         /// <param name="conten">内容</param>
-        public static void Writerlog(string ip, string address, string conten)
+        public static void Writerlog(string ip, string path, string fileName)
         {
-            var logPath = Directory.GetCurrentDirectory() + "/wwwroot/";
+            var logPath = Directory.GetCurrentDirectory() + "/Content/";
             using (StreamWriter stream = new StreamWriter(logPath + "log.txt", true))
             {
-                stream.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\t\t{ip}\t\t{address}\t\t{conten}");
+                stream.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\t\t{ip}\t\t{path}\t\t{fileName}");
                 stream.Close();
             }
         }
