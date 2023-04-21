@@ -73,14 +73,14 @@ namespace OSS.Controllers
         /// <summary>
         /// 上传图片
         /// </summary>
-        /// <param name="image">图片类型文件</param>
+        /// <param name="file">图片类型文件</param>
         /// <returns></returns>
         [HttpPost, Route("[action]")]
-        public IActionResult SaveImage(IFormFile image)
+        public IActionResult SaveImage(IFormFile file)
         {
             try
             {
-                var suffix = Path.GetExtension(image.FileName);
+                var suffix = Path.GetExtension(file.FileName);
                 if (suffix == ".jpg" || suffix == ".png" || suffix == ".gif" || suffix == ".bmp" || suffix == ".svg" || suffix == ".webp" || suffix == ".heic" || suffix == ".heif" || suffix == ".raw")
                 {
                     //图片存放地址
@@ -94,7 +94,7 @@ namespace OSS.Controllers
                     string savePath = path + imageName;
                     using (FileStream fs = System.IO.File.Create(savePath))
                     {
-                        image.CopyTo(fs);
+                        file.CopyTo(fs);
                         fs.Flush();
                     }
                     var result = new Result<string>
